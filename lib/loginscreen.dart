@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+TextEditingController emailcontroller = new TextEditingController();
+TextEditingController passwordcontroller = new TextEditingController();
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+bool _Isloading = false;
+
+class _LoginScreenState extends State<LoginScreen> {
+  signIn (String emailcontroller, String passwordcontroller) async{
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +32,8 @@ class LoginScreen extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
-              keyboardType: TextInputType.emailAddress,
+              // keyboardType: TextInputType.emailAddress,
+              controller: emailcontroller,
               decoration: InputDecoration(
                 labelText: "Enter email",
                 border: OutlineInputBorder(),
@@ -29,7 +44,8 @@ class LoginScreen extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
-              keyboardType: TextInputType.visiblePassword,
+              // keyboardType: TextInputType.visiblePassword,
+              controller: passwordcontroller,
               obscureText: true, //to be seen like dots
               decoration: InputDecoration(
                   labelText: "Enter password",
@@ -57,9 +73,14 @@ class LoginScreen extends StatelessWidget {
               height: 40,
               width: double.infinity,
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _Isloading = true;
+                  });
+                  signIn(emailcontroller.text, passwordcontroller.text);
+                },
                 child: Text(
-                  "LOGIN",
+                  "Sign In",
                   style: TextStyle(
                       fontSize: 25, letterSpacing: 3, color: Colors.white),
                 ),
