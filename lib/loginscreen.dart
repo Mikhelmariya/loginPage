@@ -20,8 +20,19 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: ((context) {
           return Center(child: CircularProgressIndicator());
         }));
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailcontroller, password: passwordcontroller);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailcontroller, password: passwordcontroller);
+    } catch (Exception) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Invalid username or password"),
+          );
+        },
+      );
+    }
   }
 
   @override
