@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/loginscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:login/pages/auth_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,7 +21,7 @@ class LoginPage extends StatelessWidget {
           title: Center(child: Text("Login Page")),
           backgroundColor: Colors.teal,
         ),
-        body: LoginScreen(),
+        body: AuthPage(),
       ),
     );
   }

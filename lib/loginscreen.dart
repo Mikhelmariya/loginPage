@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController emailcontroller = new TextEditingController();
@@ -13,8 +14,9 @@ class LoginScreen extends StatefulWidget {
 bool _Isloading = false;
 
 class _LoginScreenState extends State<LoginScreen> {
-  signIn (String emailcontroller, String passwordcontroller) async{
-
+  signIn(String emailcontroller, String passwordcontroller) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroller, password: passwordcontroller);
   }
 
   @override
