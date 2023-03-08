@@ -15,6 +15,11 @@ bool _Isloading = false;
 
 class _LoginScreenState extends State<LoginScreen> {
   signIn(String emailcontroller, String passwordcontroller) async {
+    showDialog(
+        context: context,
+        builder: ((context) {
+          return Center(child: CircularProgressIndicator());
+        }));
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailcontroller, password: passwordcontroller);
   }
